@@ -22,6 +22,7 @@ The box plots provide a visual summary of the distribution of reviews per month 
 ![hw9_eda3](assets/image/hw9_eda3.png)
 
 ## Feature engineering
+Feature engineering is like preparing the ingredients for cooking. You choose and prepare each piece of information about something you want to understand.It's about making sure your data is in the best shape for the computer to understand and solve a problem.
 
 We derived two useful features:
 - `price_minimum_nights`: the product of `price` and `minimum_nights`. This feature is a proxy for the total cost of the listing.
@@ -73,6 +74,8 @@ Through trying the models with some default hyperparameters, hyperparameter opti
 It is obvious that it does not necessarily mean that our results are perfect, there are still several parts of analysis being worth thinking over in the entire process:
 
 1.The data processing needs to be treated more carefully. There is a column of the original dataset called "last review", which indicates the date of the last review for each rental house. This variable can potentially have a significant impact on the target variable "reviews_per_month.", such as predicting the temporal trend-more recent reviews contribute more to the popularity of the house and the overall review count. We decide to drop these time-ordered sequence of data points at that time, which could potentially mislead our preprocessor and impact the final result in uncertain ways. 
+
+2.A more effective feature engineering can be explored. In our approach, we simply create two new variables "price_minimum_nights" and " minimum_nights_host_listings" by multiplying some relevant variables such as "price" and "minimum_nights" intuitively. Obviously, this method is not comprehensive and rigorous. Our model may overemphasize numeric variables and certain patterns, which might not actually contribute to predictive accuracy. It is worth noting the variable called "Name", the title of advertisement in text format. From this variable, we can explore some adjunct word "beautiful house" "amazing" and generate a positive and negative scoring analysis on each title, a more postive title may extract more attentions and leads to more reviews per month. Extracting more useful information can contribute to a better performance on our results.
 
 # Your post must include the following elements (not necessarily in this order):
 
