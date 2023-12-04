@@ -70,6 +70,10 @@ Through trying the models with some default hyperparameters, hyperparameter opti
 
 # Why our results might be incorrect
 
+It is obvious that it does not necessarily mean that our results are perfect, there are still several parts of analysis being worth thinking over in the entire process:
+
+1.The data processing needs to be treated more carefully. There is a column of the original dataset called "last review", which indicates the date of the last review for each rental house. This variable can potentially have a significant impact on the target variable "reviews_per_month.", such as predicting the temporal trend-more recent reviews contribute more to the popularity of the house and the overall review count. We decide to drop these time-ordered sequence of data points at that time, which could potentially mislead our preprocessor and impact the final result in uncertain ways. 
+
 # Your post must include the following elements (not necessarily in this order):
 
 
