@@ -64,6 +64,9 @@ LightGBM stands for Light Gradient Boosting Machine. It's like a team of experts
 
 # Results
 
+Our best model is the LightGBM compared to other different models, and hyperparameter optimization helps us to confirm this conclusion. Hyperparameter optimization is to find the best settings for a machine learning model to make it work as accurately as possible. Imagine you're baking cookies, and you have a recipe with a few ingredients like flour, sugar, and chocolate chips. Now, the amounts of these ingredients can affect how your cookies turn out. Hyperparameter optimization is like finding the perfect combination of these ingredient amounts to make the best cookies. 
+
+Through trying the models with some default hyperparameters, hyperparameter optimization shows that the LightGBM model might be the best performing one in the selected model. like taking multiple quizzes using different sets of questions to ensure a student truly understands the material, the LightGBM achieves a relatively good cross-validation score through mutiple times of training from optimization. Even though this score seems not to be the highest, the LightGBM model is still standing out, considering it spends the shortest fitting time and the difference between the expected score (train_score) and the actual score (test_score) is the smallest. 
 
 # Why our results might be incorrect
 
