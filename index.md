@@ -63,6 +63,23 @@ LightGBM stands for Light Gradient Boosting Machine. It's like a team of experts
 3. After some iterations, the team of experts solves the problem.
 
 # Results
+Using the LightGBM model, we can predict the number of reviews per month. We got a score of **0.38623**. 
+
+Below is a SHAP summary plot, you can interpret it as follows:
+- The features are ranked in descending order of importance.
+- The features at the top have the biggest impact on the model's predictions and vice versa.
+
+![hw9_result1](assets/image/hw9_result1.png)
+
+We can see feature **X3** on the bar plot ranked first. Which means it will have a greater impact on predicting `reviews_per_month`.
+
+But, how do we know if **X3** is positively or negatively correlated with the target? We can look at the SHAP force plot below:
+
+![hw9_result2](assets/image/hw9_result2.png)
+
+The SHAP force plot shows how the features contribute to the model's prediction. Each part represents a feature. The position on the axis shows whether the feature increased (red) or decreased (blue) the prediction.
+
+Here we have a base value of 0.99. Anything above the base value will increase the prediction and anything below the base value will decrease the prediction. **X3 = -0.8562 is pushing the prediction towards higher score. x1 = -0.19 is pushing the model towards lower score.**
 
 Our best model is the LightGBM compared to other different models, and hyperparameter optimization helps us to confirm this conclusion. Hyperparameter optimization is to find the best settings for a machine learning model to make it work as accurately as possible. Imagine you're baking cookies, and you have a recipe with a few ingredients like flour, sugar, and chocolate chips. Now, the amounts of these ingredients can affect how your cookies turn out. Hyperparameter optimization is like finding the perfect combination of these ingredient amounts to make the best cookies. 
 
@@ -74,7 +91,13 @@ It is obvious that it does not necessarily mean that our results are perfect, th
 
 1.The data processing needs to be treated more carefully. There is a column of the original dataset called "last review", which indicates the date of the last review for each rental house. This variable can potentially have a significant impact on the target variable "reviews_per_month.", such as predicting the temporal trend-more recent reviews contribute more to the popularity of the house and the overall review count. We decide to drop these time-ordered sequence of data points at that time, which could potentially mislead our preprocessor and impact the final result in uncertain ways. 
 
-# Your post must include the following elements (not necessarily in this order):
+It is obvious that it does not necessarily mean that our results are perfect, there are still several parts of analysis being worth thinking over in the entire process:
+
+1.The data processing needs to be treated more carefully. There is a column of the original dataset called "last review", which indicates the date of the last review for each rental house. This variable can potentially have a significant impact on the target variable "reviews_per_month.", such as predicting the temporal trend-more recent reviews contribute more to the popularity of the house and the overall review count. We decide to drop these time-ordered sequence of data points at that time, which could potentially mislead our preprocessor and impact the final result in uncertain ways. 
+
+It is obvious that it does not necessarily mean that our results are perfect, there are still several parts of analysis being worth thinking over in the entire process:
+
+1.The data processing needs to be treated more carefully. There is a column of the original dataset called "last review", which indicates the date of the last review for each rental house. This variable can potentially have a significant impact on the target variable "reviews_per_month.", such as predicting the temporal trend-more recent reviews contribute more to the popularity of the house and the overall review count. We decide to drop these time-ordered sequence of data points at that time, which could potentially mislead our preprocessor and impact the final result in uncertain ways. 
 
 
 
