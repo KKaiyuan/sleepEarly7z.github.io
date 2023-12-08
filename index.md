@@ -29,23 +29,23 @@ We derived two useful features:
 - `minimum_nights_host_listings`: the product of `minimum_nights` and `calculated_host_listings_count`. This feature is a proxy for the total number of nights the host has to accommodate.
 
 ## Preprocessing
-In most cases, the initial dataset is not ready for machine learning. It could contain different types of values (numerical values, categorical values, binary values and etc.). It could also have missing values. The numeric features in the dataset may be in different scales. We need to preprocess the data to make it ready for machine learning. We will use the following preprocessing steps:
+We will use the following preprocessing steps:
 
-1. Dropping Features: Some columns like "id", "host_id" and etc., are removed from the dataset because they don't provide useful information for predicting the number of reviews per month (our target).
+1. Dropping Features: Some columns like "id", "host_id", etc. because they don't provide useful information for predicting the number of reviews per month (our target).
 
-2. Numerical Features: Columns with numbers (like "price" and "minimum_nights") are being processed as follows:
+2. Numerical Features: 
     - Missing values are filled with the median value of that column.
-    - The values are then scaled so that they're centered around zero and have a variance of one, which helps certain machine learning models to perform better.
+    - The values are then scaled so that they're centered around zero and with a variance of one, which helps certain algorithms to work better.
 
-3. Text Features: The "name" column, which contains text, is transformed by:
+3. Text Features: is transformed by:
     - Replacing missing values
-    - Converting the text into numerical data using a process that counts the frequency of the eight most important words after removing common English words (like "the", "is", etc.).
+    - Converting the text into numerical data using a process that counts the frequency of the most important eight words after removing common English words (like "the", "is", etc.).
 
-4. Categorical Features: Columns with categorical data (like "neighbourhood_group") are processed by:
-    - Filling in missing values
-    - Converting categories into a format that the machine learning algorithms can understand (a process called one-hot encoding), without considering new, unseen categories (handle_unknown="ignore").
-    
-5. Discretization Features: The "latitude" and "longitude" columns are divided into 20 bins, which means that their continuous values are split into 20 ranges and then converted into a format that the machine learning algorithms can use.
+4. Categorical Features: are processed by:
+    - Filling in missing values 
+    - Converting categories into a format that the machine learning algorithms can understand
+
+5. Discretization Features: The "latitude" and "longitude" columns are divided into 20 bins.
 
 ## Model selection
 We tried different models to predict the number of reviews per month. The score of each model is shown below:
@@ -82,11 +82,7 @@ But, how do we know if **X3** is positively or negatively correlated with the ta
 
 The SHAP force plot shows how the features contribute to the model's prediction. Each part represents a feature. The position on the axis shows whether the feature increased (red) or decreased (blue) the prediction.
 
-Here we have a base value of 0.99. Anything above the base value will increase the prediction and anything below the base value will decrease the prediction. **X3 = -0.8562 is pushing the prediction towards higher score. x1 = -0.19 is pushing the model towards lower score.**
-
-Our best model is the LightGBM compared to other different models, and hyperparameter optimization helps us to confirm this conclusion. Hyperparameter optimization is to find the best settings for a machine learning model to make it work as accurately as possible. Imagine you're baking cookies, and you have a recipe with a few ingredients like flour, sugar, and chocolate chips. Now, the amounts of these ingredients can affect how your cookies turn out. Hyperparameter optimization is like finding the perfect combination of these ingredient amounts to make the best cookies. 
-
-Through trying the models with some default hyperparameters, hyperparameter optimization shows that the LightGBM model might be the best performing one in the selected model. like taking multiple quizzes using different sets of questions to ensure a student truly understands the material, the LightGBM achieves a relatively good cross-validation score through mutiple times of training from optimization. Even though this score seems not to be the highest, the LightGBM model is still standing out, considering it spends the shortest fitting time and the difference between the expected score (train_score) and the actual score (test_score) is the smallest. 
+Here we have a base value of 1.09. Anything above the base value will increase the prediction and anything below the base value will decrease the prediction. **X3 = -0.8562 is pushing the prediction towards higher score. x1 = -0.19 is pushing the model towards lower score.**
 
 # Why our results might be incorrect
 
