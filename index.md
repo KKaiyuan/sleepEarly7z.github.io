@@ -80,7 +80,7 @@ But, how do we know if **X3** is positively or negatively correlated with the ta
 
 The SHAP force plot shows how the features contribute to the model's prediction. Each part represents a feature. The position on the axis shows whether the feature increased (red) or decreased (blue) the prediction.
 
-Here we have a base value of 0.99. Anything above the base value will increase the prediction and anything below the base value will decrease the prediction. **X3 = -0.8562 is pushing the prediction towards higher score. x1 = -0.19 is pushing the model towards lower score.**
+Here we have a base value of 1.09. Anything above the base value will increase the prediction and anything below the base value will decrease the prediction. **X3 = -0.8562 is pushing the prediction towards higher score. x1 = -0.19 is pushing the model towards lower score.**
 
 Our best model is the LightGBM compared to other different models, and hyperparameter optimization helps us to confirm this conclusion. Hyperparameter optimization is to find the best settings for a machine learning model to make it work as accurately as possible. Imagine you're baking cookies, and you have a recipe with a few ingredients like flour, sugar, and chocolate chips. Now, the amounts of these ingredients can affect how your cookies turn out. Hyperparameter optimization is like finding the perfect combination of these ingredient amounts to make the best cookies. 
 
