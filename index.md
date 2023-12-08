@@ -29,7 +29,7 @@ We derived two useful features:
 - `minimum_nights_host_listings`: the product of `minimum_nights` and `calculated_host_listings_count`. This feature is a proxy for the total number of nights the host has to accommodate.
 
 ## Preprocessing
-Most of the time, the dataset is not ready for machine learning. It contains different types of values (number and object). It also has missing values and numeric features are in different scales. We need to preprocess the data to make it ready for machine learning. We will use the following preprocessing steps:
+We need to preprocess the data to make it ready for machine learning. We will use the following preprocessing steps:
 
 1. Dropping Features: Some columns like "id", "host_id", etc., are removed from the dataset because they don't provide useful information for predicting the number of reviews per month (our target).
 
