@@ -52,7 +52,7 @@ We tried different models to predict the number of reviews per month. The score 
 
 ![hw9_model1](assets/image/hw9_model1.png)
 
-As you can see, decision tree and random forest models have the best scores. However, if the training socre is much higher than the validation score, it means that the model is overfitting.
+As you can see, decision tree and random forest models have the best scores. However, if the training score is much higher than the validation score, it means that the model is overfitting.
 
 - Overfitting: The model is too complex and is learning noise from the training data. It will not generalize well to new data.
 
