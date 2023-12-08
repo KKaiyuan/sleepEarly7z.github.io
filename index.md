@@ -62,7 +62,7 @@ That's why we will use the LightGBM model instead. Eventhough the train_score is
 
 LightGBM stands for Light Gradient Boosting Machine. It's like a team of experts who are trying to solve a problem. Each expert is good at solving a part of the problem, but not all of it. So, they work together to solve the problem:
 1. The first expert takes a look at the problem and tries to solve it. He does a pretty good job, but he's not perfect. He makes some mistakes.
-2. Add another expert to the team. This expert is good at solving the mistakes that the first expert made. He's not perfect either, but he's better than the first expert at solving the mistakes.
+2. Another expert is added to the team. This expert is good at resolving the mistakes that the first expert made. He's not perfect either, but he's better than the first expert at fixing the mistakes.
 3. After some iterations, the team of experts solves the problem.
 
 # Results
