@@ -1,28 +1,28 @@
 # CPSC 330 HW 5 Analysis
 
-Airbnb is an online marketplace that connects people looking to rent out their homes with people who are looking for accommodations in that locale. It acts as a broker, receiving commissions from each booking. The platform offers a variety of lodging options, including single rooms, entire houses and apartments. This platform has become popular due to its user-friendly interface unique options and cheap prices that provide a different experience from traditional hotels.
+Airbnb is an online marketplace that connects people looking to rent out their homes with people who are looking for accommodations at that place. It acts as a broker, receiving commissions from each booking. The platform offers a variety of lodging options, including single rooms, entire houses, apartments and etc. This platform has become popular due to its user-friendly interface, unique options and cheap prices. Airbnb provides a different experience from traditional hotels.
 
-In this analysis, we will be looking at the [New York City Airbnb Open Data](https://www.kaggle.com/dgomonov/new-york-city-airbnb-open-data) from 2019. This data file includes all needed information to find out more about hosts, geographical availability, necessary metrics to make predictions and draw conclusions. Using machine learning techniques, we will predict `reviews_per_month`. This variable is a proxy for the popularity of the listing. The higher the number of reviews per month, the more popular the listing is and vice versa.
+In this analysis, we will be looking at the [New York City Airbnb Open Data](https://www.kaggle.com/dgomonov/new-york-city-airbnb-open-data) from 2019. This data file includes all needed information to find out more about hosts, geographical availability and necessary metrics to make predictions and draw conclusions. Using machine learning techniques, we will predict `reviews_per_month`. This variable is a proxy for the popularity of listings. The higher the number of reviews per month, the more popular the listing is and vice versa.
 
 
 ## Components of the analysis
 
 ### Exploratory data analysis
 
-The dataset contains some useful information about the Airbnb listings in New York City. It has `neighbourhood_group`, `neighbourhood`, `latitude`, `longitude`, `room_type`, `price`, `minimum_nights`, `number_of_reviews`, `last_review`, `reviews_per_month`, `calculated_host_listings_count`, `availability_365` columns.
+The dataset contains some useful information about the Airbnb listings in New York City. It has `neighbourhood_group`, `neighbourhood`, `latitude`, `longitude`, `room_type`, `price`, `minimum_nights`, `number_of_reviews`, `last_review`, `reviews_per_month`, `calculated_host_listings_count` and `availability_365` columns.
 
 ![hw9_eda1](assets/image/hw9_eda1.png)
 
-The neighbourhood group is a categorical variable that has 5 unique values: `Bronx`, `Brooklyn`, `Manhattan`, `Queens`, `Staten Island`. The neighbourhood is a categorical variable that has 221 unique values. The room type is a categorical variable that has 3 unique values: `Entire home/apt`, `Private room`, `Shared room`. It is possible that these different categories can have different effects on the popularity of the listing. For example, the listings in Manhattan might be more popular than the listings in Bronx. The room type might also have an effect on the popularity of the listing. For example, the listings that are `Entire home/apt` might be more popular than the listings that are `Private room`.
+The neighbourhood group is a categorical variable that has 5 unique values: `Bronx`, `Brooklyn`, `Manhattan`, `Queens` and `Staten Island`. The neighbourhood is a categorical variable that has 221 unique values. The room type is a categorical variable that has 3 unique values: `Entire home/apt`, `Private room` and `Shared room`. These different categories can have different effects on the popularity of the listing. For example, the listings in Manhattan might be more popular than the listings in Bronx. The room type might also have an effect on the popularity of the listing. For example, the listings of the room type `Entire home/apt` might be more popular than the listings of the room type `Private room`.
 
 ![hw9_eda2](assets/image/hw9_eda2.png)
 
-The box plots provide a visual summary of the distribution of reviews per month for Airbnb listings across New York City's neighbourhood groups and by room type. The data indicates that while there is a broad range of reviews per month across all categories, the median number of reviews is relatively low, suggesting that the typical listing doesn't receive a high volume of reviews monthly. Both plots show outliers, which are listings receiving significantly more reviews than average. There seems to be a greater density of reviews in certain neighbourhoods and for specific types of rooms (like entire homes/apartments) The presence of outliers across all categories suggests that while most listings get a few reviews, a small number of listings are exceptionally popular, attracting a much higher number of reviews.
+The box plots provide a visual summary of the distribution of reviews per month for Airbnb listings by New York City's neighbourhood groups and by room type. The data indicates that while there is a broad range of reviews per month across all categories, the median number of reviews is relatively low. This suggests that typical listings do not receive a high volume of reviews monthly. Both plots show outliers, which are listings receiving significantly more reviews than average. There seems to be a greater density of reviews in certain neighbourhoods and for specific types of rooms (like entire homes/apartments). The presence of outliers across all categories suggests that while most listings get a few reviews, a small number of listings are exceptionally popular, attracting much more reviews.
 
 ![hw9_eda3](assets/image/hw9_eda3.png)
 
 ## Feature engineering
-Feature engineering is like preparing the ingredients for cooking. You choose and prepare each piece of information about something you want to understand.It's about making sure your data is in the best shape for the computer to understand and solve a problem.
+Feature engineering is analogous to preparing the ingredients for cooking. You choose and prepare each piece of information about something you want to understand. Feature engineering lets you make sure your data is in the best shape for your computer to understand and solve a problem.
 
 We derived two useful features:
 - `price_minimum_nights`: the product of `price` and `minimum_nights`. This feature is a proxy for the total cost of the listing.
@@ -35,14 +35,16 @@ We will use the following preprocessing steps:
 
 2. Numerical Features: 
     - Missing values are filled with the median value of that column.
-    - The values are then scaled so that they're centred around zero and have a variance of one, which helps certain algorithms work better.
+    - The values are then scaled so that they're centered around zero and with a variance of one, which helps certain algorithms to work better.
 
 3. Text Features: is transformed by:
     - Replacing missing values
     - Converting the text into numerical data using a process that counts the frequency of the most important eight words after removing common English words (like "the", "is", etc.).
+
 4. Categorical Features: are processed by:
     - Filling in missing values 
     - Converting categories into a format that the machine learning algorithms can understand
+
 5. Discretization Features: The "latitude" and "longitude" columns are divided into 20 bins.
 
 ## Model selection
