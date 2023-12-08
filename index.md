@@ -22,7 +22,7 @@ The box plots provide a visual summary of the distribution of reviews per month 
 ![hw9_eda3](assets/image/hw9_eda3.png)
 
 ## Feature engineering
-Feature engineering is like preparing the ingredients for cooking. You choose and prepare each piece of information about something you want to understand.It's about making sure your data is in the best shape for the computer to understand and solve a problem.
+Feature engineering is analogous to preparing the ingredients for cooking. You choose and prepare each piece of information about something you want to understand. Feature engineering lets you make sure your data is in the best shape for your computer to understand and solve a problem.
 
 We derived two useful features:
 - `price_minimum_nights`: the product of `price` and `minimum_nights`. This feature is a proxy for the total cost of the listing.
