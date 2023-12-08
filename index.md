@@ -1,8 +1,8 @@
 # CPSC 330 HW 5 Analysis
 
-Airbnb is an online marketplace that connects people looking to rent out their homes with people who are looking for accommodations in that locale. It acts as a broker, receiving commissions from each booking. The platform offers a variety of lodging options, including single rooms, entire houses and apartments. This platform has become popular due to its user-friendly interface unique options and cheap prices that provide a different experience from traditional hotels.
+Airbnb is an online marketplace that connects people looking to rent out their homes with people who are looking for accommodations at that place. It acts as a broker, receiving commissions from each booking. The platform offers a variety of lodging options, including single rooms, entire houses, apartments and etc. This platform has become popular due to its user-friendly interface, unique options and cheap prices. Airbnb provides a different experience from traditional hotels.
 
-In this analysis, we will be looking at the [New York City Airbnb Open Data](https://www.kaggle.com/dgomonov/new-york-city-airbnb-open-data) from 2019. This data file includes all needed information to find out more about hosts, geographical availability, necessary metrics to make predictions and draw conclusions. Using machine learning techniques, we will predict `reviews_per_month`. This variable is a proxy for the popularity of the listing. The higher the number of reviews per month, the more popular the listing is and vice versa.
+In this analysis, we will be looking at the [New York City Airbnb Open Data](https://www.kaggle.com/dgomonov/new-york-city-airbnb-open-data) from 2019. This data file includes all needed information to find out more about hosts, geographical availability and necessary metrics to make predictions and draw conclusions. Using machine learning techniques, we will predict `reviews_per_month`. This variable is a proxy for the popularity of listings. The higher the number of reviews per month, the more popular the listing is and vice versa.
 
 
 ## Components of the analysis
