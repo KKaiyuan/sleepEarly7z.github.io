@@ -52,17 +52,17 @@ We tried different models to predict the number of reviews per month. The score 
 
 ![hw9_model1](assets/image/hw9_model1.png)
 
-As you can see, decision tree and random forest models have the best scores. However, if the training socre is much higher than the validation score, it means that the model is overfitting.
+As you can see, decision tree model and random forest model have the best scores. However, if the training score is much higher than the validation score, it means that the model is overfitting.
 
 - Overfitting: The model is too complex and is learning noise from the training data. It will not generalize well to new data.
 
-That's why we will use the LightGBM model instead. Eventhough the train_score is less than others, the gap between train_score and test_score is the smallest. Also, the fit time is the shortest. It has the lowest chance of overfitting. Therefore, we can conclude that the lightGBM is the best model.
+That's why we will use the LightGBM model instead. Eventhough the train_score is less than others, the gap between train_score and test_score is the smallest. Also, the fit time for LightGBM is the shortest. It has the lowest chance of overfitting. Therefore, we can conclude that LightGBM is the best model.
 
 ## LightGBM
 
 LightGBM stands for Light Gradient Boosting Machine. It's like a team of experts who are trying to solve a problem. Each expert is good at solving a part of the problem, but not all of it. So, they work together to solve the problem:
 1. The first expert takes a look at the problem and tries to solve it. He does a pretty good job, but he's not perfect. He makes some mistakes.
-2. Add another expert to the team. This expert is good at solving the mistakes that the first expert made. He's not perfect either, but he's better than the first expert at solving the mistakes.
+2. Another expert is added to the team. This expert is good at resolving the mistakes that the first expert made. He's not perfect either, but he's better than the first expert at fixing the mistakes.
 3. After some iterations, the team of experts solves the problem.
 
 # Results
@@ -74,25 +74,25 @@ Below is a SHAP summary plot, you can interpret it as follows:
 
 ![hw9_result1](assets/image/hw9_result1.png)
 
-We can see feature **X3** on the bar plot ranked first. Which means it will have a greater impact on predicting `reviews_per_month`.
+We can see the feature **X3** on the bar plot ranked first. Which means it will have a greater impact on predicting `reviews_per_month`.
 
-But, how do we know if **X3** is positively or negatively correlated with the target? We can look at the SHAP force plot below:
+However, how do we know if **X3** is positively or negatively correlated with the target? We can look at the SHAP force plot below:
 
 ![hw9_result2](assets/image/hw9_result2.png)
 
-The SHAP force plot shows how the features contribute to the model's prediction. Each part represents a feature. The position on the axis shows whether the feature increased (red) or decreased (blue) the prediction.
+The SHAP force plot shows how the features contribute to the model's predictions. Each part represents a feature. The position on the axis shows whether the feature increases (red) or decreases (blue) the prediction.
 
-Here we have a base value of 1.09. Anything above the base value will increase the prediction and anything below the base value will decrease the prediction. **X3 = -0.8562 is pushing the prediction towards higher score. x1 = -0.19 is pushing the model towards lower score.**
+Here we have a base value of 1.09. Anything above the base value will increase the prediction and anything below the base value will decrease the prediction. **X3 = -0.8562 is pushing the prediction towards a higher score. x1 = -0.19 is pushing the model towards a lower score.**
 
 # Why our results might be incorrect
 
-It is obvious that it does not necessarily mean that our results are perfect, there are still several parts of analysis being worth thinking over in the entire process:
+Our results might not be perfect. There are still several parts of analysis worth thinking over in the entire process:
 
-1. The data processing needs to be treated more carefully. There is a column of the original dataset called "last review", which indicates the date of the last review for each rental house. This variable can potentially have a significant impact on the target variable "reviews_per_month.", such as predicting the temporal trend-more recent reviews contribute more to the popularity of the house and the overall review count. We decide to drop these time-ordered sequence of data points at that time, which could potentially mislead our preprocessor and impact the final result in uncertain ways. 
+1. Our data processing could to be treated more carefully. There is a column in the original dataset called "last review", which indicates the date of the last review for each rental house. This variable can potentially have a significant impact on the target variable "reviews_per_month". When predicting the temporal trend, more recent reviews contribute more to the popularity of the house and the overall number of review. We decide to drop these time-ordered sequence of data points at that time, which could potentially mislead our preprocessor and impact the final result in uncertain ways. 
 
-2. A more effective feature engineering can be explored. In our approach, we simply create two new variables "price_minimum_nights" and " minimum_nights_host_listings" by multiplying some relevant variables such as "price" and "minimum_nights" intuitively. Obviously, this method is not comprehensive and rigorous. Our model may overemphasize numeric variables and certain patterns, which might not actually contribute to predictive accuracy. It is worth noting the variable called "Name", the title of advertisement in text format. From this variable, we can explore some adjunct word "beautiful house" "amazing" and generate a positive and negative scoring analysis on each title, a more postive title may extract more attentions and leads to more reviews per month. Extracting more useful information can contribute to a better performance on our results.
+2. A more effective feature engineering can be explored. In our approach, we simply create two new variables "price_minimum_nights" and "minimum_nights_host_listings" by multiplying some relevant variables such as "price" and "minimum_nights". Obviously, this method is not comprehensive and rigorous. Our model may overemphasize numeric variables and certain patterns, which might not actually contribute to predictive accuracy. It is worth noting the variable called "Name" corresponds to the title of advertisement in text format. From this variable, we can explore some adjunct word (i.e. "beautiful house" and "amazing") and generate a positive and negative scoring analysis on each title. A more positive title may extract more attentions and lead to more reviews per month. Extracting more useful information can contribute to a better performance on our results.
 
-3. What's "X3"? In the conclusion, we found feature X3 played a pivotal role in the prediction. However, X3 is not present in the original dataset. It's a generated feature when we did preprocessing. A complicated model gives better prediction, but it has less interpretability.
+3. What's "X3"? In the conclusion, we found feature X3 played a pivotal role in the prediction. However, X3 is not present in the original dataset. It is a generated feature when we did preprocessing. A complicated model gives better prediction, but it has less interpretability.
 
 
 # Citations
