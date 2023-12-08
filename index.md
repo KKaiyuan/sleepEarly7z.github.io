@@ -29,21 +29,23 @@ We derived two useful features:
 - `minimum_nights_host_listings`: the product of `minimum_nights` and `calculated_host_listings_count`. This feature is a proxy for the total number of nights the host has to accommodate.
 
 ## Preprocessing
-Most of the time, the dataset is not ready for machine learning. It contains different types of values (number and object). It also has missing values and numeric features are in different scales. We need to preprocess the data to make it ready for machine learning. We will use the following preprocessing steps:
+In most cases, the initial dataset is not ready for machine learning. It could contain different types of values (numerical values, categorical values, binary values and etc.). It could also have missing values. The numeric features in the dataset may be in different scales. We need to preprocess the data to make it ready for machine learning. We will use the following preprocessing steps:
 
-1. Dropping Features: Some columns like "id", "host_id", etc., are removed from the dataset because they don't provide useful information for predicting the number of reviews per month (our target).
+1. Dropping Features: Some columns like "id", "host_id" and etc., are removed from the dataset because they don't provide useful information for predicting the number of reviews per month (our target).
 
-2. Numerical Features: Columns with numbers (like "price" and "minimum_nights") are being processed in a specific way:
+2. Numerical Features: Columns with numbers (like "price" and "minimum_nights") are being processed as follows:
     - Missing values are filled with the median value of that column.
-    - The values are then scaled so that they're centered around zero and have a variance of one, which helps certain algorithms work better.
+    - The values are then scaled so that they're centered around zero and have a variance of one, which helps certain machine learning models to perform better.
 
 3. Text Features: The "name" column, which contains text, is transformed by:
     - Replacing missing values
-    - Converting the text into numerical data using a process that counts the frequency of the most important eight words after removing common English words (like "the", "is", etc.).
-4. Categorical Features: Columns with category data (like "neighbourhood_group") are processed by:
-    - Filling in missing values 
+    - Converting the text into numerical data using a process that counts the frequency of the eight most important words after removing common English words (like "the", "is", etc.).
+
+4. Categorical Features: Columns with categorical data (like "neighbourhood_group") are processed by:
+    - Filling in missing values
     - Converting categories into a format that the machine learning algorithms can understand (a process called one-hot encoding), without considering new, unseen categories (handle_unknown="ignore").
-5. Discretization Features: The "latitude" and "longitude" columns are divided into 20 bins, which means their continuous values are split into 20 ranges and then converted into a format that the machine learning algorithms can use.
+    
+5. Discretization Features: The "latitude" and "longitude" columns are divided into 20 bins, which means that their continuous values are split into 20 ranges and then converted into a format that the machine learning algorithms can use.
 
 ## Model selection
 We tried different models to predict the number of reviews per month. The score of each model is shown below:
