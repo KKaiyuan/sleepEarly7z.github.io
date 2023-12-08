@@ -74,15 +74,15 @@ Below is a SHAP summary plot, you can interpret it as follows:
 
 ![hw9_result1](assets/image/hw9_result1.png)
 
-We can see feature **X3** on the bar plot ranked first. Which means it will have a greater impact on predicting `reviews_per_month`.
+We can see the feature **X3** on the bar plot ranked first. Which means it will have a greater impact on predicting `reviews_per_month`.
 
-But, how do we know if **X3** is positively or negatively correlated with the target? We can look at the SHAP force plot below:
+However, how do we know if **X3** is positively or negatively correlated with the target? We can look at the SHAP force plot below:
 
 ![hw9_result2](assets/image/hw9_result2.png)
 
-The SHAP force plot shows how the features contribute to the model's prediction. Each part represents a feature. The position on the axis shows whether the feature increased (red) or decreased (blue) the prediction.
+The SHAP force plot shows how the features contribute to the model's predictions. Each part represents a feature. The position on the axis shows whether the feature increases (red) or decreases (blue) the prediction.
 
-Here we have a base value of 1.09. Anything above the base value will increase the prediction and anything below the base value will decrease the prediction. **X3 = -0.8562 is pushing the prediction towards higher score. x1 = -0.19 is pushing the model towards lower score.**
+Here we have a base value of 1.09. Anything above the base value will increase the prediction and anything below the base value will decrease the prediction. **X3 = -0.8562 is pushing the prediction towards a higher score. x1 = -0.19 is pushing the model towards a lower score.**
 
 # Why our results might be incorrect
 
